@@ -532,7 +532,7 @@ void sensorsTask(void *param)
 				(isMagPresent ? SENSORS_MAG_BUFF_LEN : 0) +
 				(isBaroPresent ? SENSORS_BARO_BUFF_LEN : 0));
 
-			i2cdevRead(I2C1_DEV, MPU6500_ADDRESS_AD0_HIGH, MPU6500_RA_ACCEL_XOUT_H, dataLen, buffer);
+			i2cdevRead(I2C1_DEV, MPU6500_ADDRESS_AD0_HIGH, MPU6500_RA_ACCEL_XOUT_H, dataLen, buffer); //maxi:这应该是最原始的读取传感器IMU数据的函数，在传感器任务里面直接调用了。
 			
 			/*处理原始数据，并放入数据队列中*/
 			processAccGyroMeasurements(&(buffer[0]));
